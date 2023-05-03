@@ -1,10 +1,11 @@
 # Description: Test file for texter.py
+# Un-comment this line to get started:
+# from src import texter
+
+# def test_leet():
 
 
-# test leet()
-
-
-# test clapify()
+# def test_clapify():
 
 
 # test emojify()
