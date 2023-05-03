@@ -5,13 +5,7 @@
 	"forwardPorts": [8000],
 	"build": {
 		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			// Update 'VARIANT' to pick a Python version: 3, 3.10, 3.9, 3.8, 3.7, 3.6
-			// Append -bullseye or -buster to pin to an OS version.
-			// Use -bullseye variants on local on arm64/Apple Silicon.
-			"VARIANT": "3.10-bullseye"
-		}
+		"context": ".."
 	},
 
 	// Configure tool-specific properties.
@@ -22,21 +16,33 @@
 			"settings": {
 				"python.defaultInterpreterPath": "/usr/local/bin/python",
 				"python.linting.enabled": true,
-				"python.linting.pylintEnabled": true,
-                "python.testing.unittestEnabled": false,
-                "python.testing.pytestEnabled": true
+				"python.testing.pytestEnabled": true,
+				"python.testing.unittestEnabled": false,
+				"[python]": {
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+						"source.fixAll": true
+					},
+					"editor.defaultFormatter": "ms-python.black-formatter"
+				},
+				"python.formatting.provider": "black",
+				"files.exclude": {
+					"**/*.coverage": true,
+					".ruff_cache": true,
+					".pytest_cache": true,
+					"__pycache__": true
+				}
 			},
 
 			// Add the IDs of extensions you want installed when the container is created.
 			"extensions": [
 				"ms-python.python",
-				"ms-python.vscode-pylance"
+				"ms-python.vscode-pylance",
+				"charliermarsh.ruff",
+				"ms-python.black-formatter"
 			]
 		}
 	},
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "pip3 install --user -r requirements-dev.txt && pre-commit install",
