@@ -30,7 +30,7 @@
 					"**/*.coverage": true,
 					".ruff_cache": true,
 					".pytest_cache": true,
-					"__pycache__": true
+					"**/__pycache__": true
 				}
 			},
 
