@@ -1,18 +1,20 @@
 # Description: Test file for texter.py
 # Un-comment this line to get started:
-# from src import texter
+from src import texter
 
-# def test_leet():
+
+def test_leet():
+    assert texter.leet("hello") == "h3llo"
 
 
 # def test_clapify():
 
 
-# test emojify()
+# def test_emojify():
 
 
-# test shortener()
+# def test_shortener():
 
 
-# test exclamify()
+# def test_exclamify():
 # hint: use random.seed() to get same random result every time
