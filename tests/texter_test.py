@@ -1,5 +1,4 @@
 # Description: Test file for texter.py
-# Un-comment this line to get started:
 from src import texter
 
 
